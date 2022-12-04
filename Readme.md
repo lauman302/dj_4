@@ -1,0 +1,1 @@
+Проекты из книги Django 4 by Example
