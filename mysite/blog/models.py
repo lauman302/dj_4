@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
+from taggit.managers import TaggableManager
 
 User = get_user_model()
 
@@ -25,6 +26,7 @@ class Post(models.Model):
         User,
         on_delete=models.CASCADE,
         related_name='blog_posts')
+    tags = TaggableManager()
     body = models.TextField()
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
@@ -60,9 +62,9 @@ class Post(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name='comments')
-    name = models.CharField(max_length=80)
-    email = models.EmailField()
-    body = models.TextField()
+    name = models.CharField(max_length=80, verbose_name='Имя пользователя')
+    email = models.EmailField('Электронная почта')
+    body = models.TextField(verbose_name='Поле ввода')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)
