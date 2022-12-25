@@ -2,7 +2,8 @@
 {% block title %}Log-in{% endblock %}
 {% block content %}
  <h1>Авторизация</h1>
- <p>Пожалуйста, для авторизации введите свои данные</p>
+ <p>Пожалуйста, для авторизации введите свои данные
+</p>
  <form method="post">
  {{ form.as_p }}
  {% csrf_token %}

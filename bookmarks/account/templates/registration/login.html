@@ -8,7 +8,9 @@
         Повторите ввод снова.
     </p>
  {% else %}
-    <p>Для авторизации укажите свои данные:</p>
+    <p>Для авторизации укажите свои данные:
+   </br> Если нет аккаунта, <a href="{% url 'register' %}">зарегитрируйтесь</a> 
+    </p>
  {% endif %}
  <div class="login-form">
     <form action="{% url 'login' %}" method="post">
@@ -17,5 +19,10 @@
     <input type="hidden" name="next" value="{{ next }}" />
     <p><input type="submit" value="Войти"></p>
     </form>
+    <p>
+      <a href="{% url "password_reset" %}">
+      Забыли пароль?
+      </a>
+   </p>
  </div>
 {% endblock %}
